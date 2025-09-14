@@ -1,11 +1,11 @@
 package com.mromer.customer_microservice.customer.infrastructure.adapters.out.persistence;
 
-import com.mromer.customer_microservice.common.application.PagedResponseDTO;
 import com.mromer.customer_microservice.customer.application.port.out.persistence.FindingCustomersOutputPort;
 import com.mromer.customer_microservice.customer.application.port.out.persistence.StoringCustomerOutputPort;
 import com.mromer.customer_microservice.customer.application.port.in.FindCustomersCommand;
 import com.mromer.customer_microservice.customer.domain.Customer;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -28,7 +28,6 @@ public class CustomerPersistenceAdapter implements StoringCustomerOutputPort, Fi
         return CustomerEntityMapper.toDomain(saved);
     }
 
-    // ----------------- FindingCustomersOutputPort -----------------
     @Override
     public Optional<Customer> findById(UUID id) {
         return repository.findById(id).map(CustomerEntityMapper::toDomain);
@@ -55,12 +54,13 @@ public class CustomerPersistenceAdapter implements StoringCustomerOutputPort, Fi
     }
 
     @Override
-    public PagedResponseDTO<Customer> findAll(FindCustomersCommand command, Pageable pageable) {
+    public Page<Customer> findAll(FindCustomersCommand command, Pageable pageable) {
 
         Specification<CustomerEntity> spec = Specification
-                .anyOf(
+                .allOf(
                         CustomerSpecs.firstNameContains(command.firstName()),
                         CustomerSpecs.lastNameContains(command.lastName()),
+                        CustomerSpecs.activeEquals(command.active()),
                         CustomerSpecs.nitEquals(command.nit()));
 
         Page<CustomerEntity> page = repository.findAll(spec, pageable);
@@ -68,15 +68,8 @@ public class CustomerPersistenceAdapter implements StoringCustomerOutputPort, Fi
         List<Customer> customers = page.getContent().stream()
                 .map(CustomerEntityMapper::toDomain)
                 .toList();
+        Page<Customer> pageResult = new PageImpl<>(customers, pageable, page.getTotalElements());
 
-        return new PagedResponseDTO<>(
-                customers,
-                page.getTotalElements(),
-                page.getNumber(),
-                page.getTotalPages(),
-                page.isFirst(),
-                page.isLast(),
-                page.hasNext(),
-                page.hasPrevious());
+        return pageResult;
     }
 }
