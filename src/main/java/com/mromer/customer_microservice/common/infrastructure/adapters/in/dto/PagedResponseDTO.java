@@ -1,4 +1,4 @@
-package com.mromer.customer_microservice.common.application;
+package com.mromer.customer_microservice.common.infrastructure.adapters.in.dto;
 
 import java.util.List;
 
