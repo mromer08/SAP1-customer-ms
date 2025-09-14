@@ -1,12 +1,12 @@
 package com.mromer.customer_microservice.customer.application.services;
 
+import com.mromer.customer_microservice.customer.application.exceptions.DuplicateNITException;
 import com.mromer.customer_microservice.customer.application.mappers.CustomerMapper;
 import com.mromer.customer_microservice.customer.application.port.in.CreateCustomerCommand;
 import com.mromer.customer_microservice.customer.application.port.in.CreatingCustomerInputPort;
 import com.mromer.customer_microservice.customer.application.port.out.persistence.FindingCustomersOutputPort;
 import com.mromer.customer_microservice.customer.application.port.out.persistence.StoringCustomerOutputPort;
 import com.mromer.customer_microservice.customer.domain.Customer;
-import com.mromer.customer_microservice.customer.domain.exceptions.DuplicateNITException;
 
 public class CreateCustomerService implements CreatingCustomerInputPort {
 

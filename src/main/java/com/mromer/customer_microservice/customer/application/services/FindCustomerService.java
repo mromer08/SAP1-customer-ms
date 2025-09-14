@@ -2,9 +2,9 @@ package com.mromer.customer_microservice.customer.application.services;
 
 import java.util.*;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.mromer.customer_microservice.common.application.PagedResponseDTO;
 import com.mromer.customer_microservice.customer.application.port.in.FindCustomersCommand;
 import com.mromer.customer_microservice.customer.application.port.in.FindingCustomerInputPort;
 import com.mromer.customer_microservice.customer.application.port.out.persistence.FindingCustomersOutputPort;
@@ -29,7 +29,7 @@ public class FindCustomerService implements FindingCustomerInputPort {
     }
 
     @Override
-    public PagedResponseDTO<Customer> findAll(FindCustomersCommand command, Pageable pageable) {
+    public Page<Customer> findAll(FindCustomersCommand command, Pageable pageable) {
         return findingCustomersOutputPort.findAll(command, pageable);
     }
 }
