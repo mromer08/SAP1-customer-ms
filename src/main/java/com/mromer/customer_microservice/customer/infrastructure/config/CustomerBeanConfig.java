@@ -18,25 +18,25 @@ public class CustomerBeanConfig {
 
     // Beans de servicios de aplicación (Input Ports)
     @Bean
-    public CreatingCustomerInputPort creatingCustomer(StoringCustomerOutputPort outputPort,
-                                                      FindingCustomersOutputPort findingOutputPort) {
+    public CreateCustomerInputPort creatingCustomer(StoreCustomerOutputPort outputPort,
+                                                      FindCustomersOutputPort findingOutputPort) {
         return new CreateCustomerService(outputPort, findingOutputPort);
     }
 
     @Bean
-    public UpdateCustomerInputPort updatingCustomer(StoringCustomerOutputPort outputPort,
-                                                    FindingCustomersOutputPort findingOutputPort) {
+    public UpdateCustomerInputPort updatingCustomer(StoreCustomerOutputPort outputPort,
+                                                    FindCustomersOutputPort findingOutputPort) {
         return new UpdateCustomerService(outputPort, findingOutputPort);
     }
 
     @Bean
-    public DeactivatingCustomerInputPort deactivatingCustomer(FindingCustomersOutputPort findingOutputPort,
-                                                              StoringCustomerOutputPort storingOutputPort) {
+    public DeactivateCustomerInputPort deactivatingCustomer(FindCustomersOutputPort findingOutputPort,
+                                                              StoreCustomerOutputPort storingOutputPort) {
         return new DeactivateCustomerService(findingOutputPort, storingOutputPort);
     }
 
     @Bean
-    public FindingCustomerInputPort findingCustomer(FindingCustomersOutputPort findingOutputPort) {
+    public FindCustomerInputPort findingCustomer(FindCustomersOutputPort findingOutputPort) {
         return new FindCustomerService(findingOutputPort);
     }
 }

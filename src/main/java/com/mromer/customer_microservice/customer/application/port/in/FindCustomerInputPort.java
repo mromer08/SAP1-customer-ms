@@ -8,7 +8,7 @@ import org.springframework.data.domain.Pageable;
 
 import com.mromer.customer_microservice.customer.domain.Customer;
 
-public interface FindingCustomerInputPort {
+public interface FindCustomerInputPort {
     Optional<Customer> findById(UUID id);
     Optional<Customer> findByNIT(String nit);
     Page<Customer> findAll(FindCustomersCommand command, Pageable pageable);

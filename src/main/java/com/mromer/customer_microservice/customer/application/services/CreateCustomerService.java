@@ -2,19 +2,17 @@ package com.mromer.customer_microservice.customer.application.services;
 
 import com.mromer.customer_microservice.customer.application.exceptions.DuplicateNITException;
 import com.mromer.customer_microservice.customer.application.mappers.CustomerMapper;
-import com.mromer.customer_microservice.customer.application.port.in.CreateCustomerCommand;
-import com.mromer.customer_microservice.customer.application.port.in.CreatingCustomerInputPort;
-import com.mromer.customer_microservice.customer.application.port.out.persistence.FindingCustomersOutputPort;
-import com.mromer.customer_microservice.customer.application.port.out.persistence.StoringCustomerOutputPort;
+import com.mromer.customer_microservice.customer.application.port.in.*;
+import com.mromer.customer_microservice.customer.application.port.out.persistence.*;
 import com.mromer.customer_microservice.customer.domain.Customer;
 
-public class CreateCustomerService implements CreatingCustomerInputPort {
+public class CreateCustomerService implements CreateCustomerInputPort {
 
-    private final StoringCustomerOutputPort storingCustomerOutputPort;
-    private final FindingCustomersOutputPort findingCustomersOutputPort;
+    private final StoreCustomerOutputPort storingCustomerOutputPort;
+    private final FindCustomersOutputPort findingCustomersOutputPort;
 
-    public CreateCustomerService(StoringCustomerOutputPort storingCustomerOutputPort,
-            FindingCustomersOutputPort findingCustomersOutputPort) {
+    public CreateCustomerService(StoreCustomerOutputPort storingCustomerOutputPort,
+            FindCustomersOutputPort findingCustomersOutputPort) {
         this.storingCustomerOutputPort = storingCustomerOutputPort;
         this.findingCustomersOutputPort = findingCustomersOutputPort;
     }

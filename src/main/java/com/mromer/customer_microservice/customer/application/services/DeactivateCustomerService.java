@@ -3,18 +3,17 @@ package com.mromer.customer_microservice.customer.application.services;
 import java.util.UUID;
 
 import com.mromer.customer_microservice.customer.application.exceptions.CustomerNotFoundException;
-import com.mromer.customer_microservice.customer.application.port.in.DeactivatingCustomerInputPort;
-import com.mromer.customer_microservice.customer.application.port.out.persistence.FindingCustomersOutputPort;
-import com.mromer.customer_microservice.customer.application.port.out.persistence.StoringCustomerOutputPort;
+import com.mromer.customer_microservice.customer.application.port.in.*;
+import com.mromer.customer_microservice.customer.application.port.out.persistence.*;
 import com.mromer.customer_microservice.customer.domain.Customer;
 
-public class DeactivateCustomerService implements DeactivatingCustomerInputPort {
+public class DeactivateCustomerService implements DeactivateCustomerInputPort {
 
-    private final FindingCustomersOutputPort findingCustomersOutputPort;
-    private final StoringCustomerOutputPort storingCustomerOutputPort;
+    private final FindCustomersOutputPort findingCustomersOutputPort;
+    private final StoreCustomerOutputPort storingCustomerOutputPort;
 
-    public DeactivateCustomerService(FindingCustomersOutputPort findingCustomersOutputPort,
-                                     StoringCustomerOutputPort storingCustomerOutputPort) {
+    public DeactivateCustomerService(FindCustomersOutputPort findingCustomersOutputPort,
+                                     StoreCustomerOutputPort storingCustomerOutputPort) {
         this.findingCustomersOutputPort = findingCustomersOutputPort;
         this.storingCustomerOutputPort = storingCustomerOutputPort;
     }

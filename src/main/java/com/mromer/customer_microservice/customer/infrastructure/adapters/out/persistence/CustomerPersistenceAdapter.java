@@ -1,7 +1,6 @@
 package com.mromer.customer_microservice.customer.infrastructure.adapters.out.persistence;
 
-import com.mromer.customer_microservice.customer.application.port.out.persistence.FindingCustomersOutputPort;
-import com.mromer.customer_microservice.customer.application.port.out.persistence.StoringCustomerOutputPort;
+import com.mromer.customer_microservice.customer.application.port.out.persistence.*;
 import com.mromer.customer_microservice.customer.application.port.in.FindCustomersCommand;
 import com.mromer.customer_microservice.customer.domain.Customer;
 import org.springframework.data.domain.Page;
@@ -13,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class CustomerPersistenceAdapter implements StoringCustomerOutputPort, FindingCustomersOutputPort {
+public class CustomerPersistenceAdapter implements StoreCustomerOutputPort, FindCustomersOutputPort {
 
     private final CustomerJpaRepository repository;
 

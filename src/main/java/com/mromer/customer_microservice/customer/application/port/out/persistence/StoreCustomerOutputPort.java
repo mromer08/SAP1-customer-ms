@@ -2,6 +2,6 @@ package com.mromer.customer_microservice.customer.application.port.out.persisten
 
 import com.mromer.customer_microservice.customer.domain.Customer;
 
-public interface StoringCustomerOutputPort {
+public interface StoreCustomerOutputPort {
     Customer save(Customer customer);
 }

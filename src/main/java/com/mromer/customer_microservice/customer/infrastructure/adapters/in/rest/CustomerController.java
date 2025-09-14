@@ -25,10 +25,10 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class CustomerController {
 
-    private final CreatingCustomerInputPort creatingCustomerInputPort;
+    private final CreateCustomerInputPort creatingCustomerInputPort;
     private final UpdateCustomerInputPort updateCustomerInputPort;
-    private final DeactivatingCustomerInputPort deactivatingCustomerInputPort;
-    private final FindingCustomerInputPort findingCustomerInputPort;
+    private final DeactivateCustomerInputPort deactivatingCustomerInputPort;
+    private final FindCustomerInputPort findingCustomerInputPort;
 
     @PostMapping
     public ResponseEntity<CustomerResponseDTO> createCustomer(@RequestBody @Valid CreateCustomerRequestDTO requestDTO) {

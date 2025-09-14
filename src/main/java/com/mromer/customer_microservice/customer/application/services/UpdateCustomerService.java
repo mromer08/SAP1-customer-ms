@@ -3,19 +3,17 @@ package com.mromer.customer_microservice.customer.application.services;
 import com.mromer.customer_microservice.customer.application.exceptions.CustomerNotFoundException;
 import com.mromer.customer_microservice.customer.application.exceptions.DuplicateNITException;
 import com.mromer.customer_microservice.customer.application.mappers.CustomerMapper;
-import com.mromer.customer_microservice.customer.application.port.in.UpdateCustomerCommand;
-import com.mromer.customer_microservice.customer.application.port.in.UpdateCustomerInputPort;
-import com.mromer.customer_microservice.customer.application.port.out.persistence.FindingCustomersOutputPort;
-import com.mromer.customer_microservice.customer.application.port.out.persistence.StoringCustomerOutputPort;
+import com.mromer.customer_microservice.customer.application.port.in.*;
+import com.mromer.customer_microservice.customer.application.port.out.persistence.*;
 import com.mromer.customer_microservice.customer.domain.Customer;
 
 public class UpdateCustomerService implements UpdateCustomerInputPort {
 
-    private final StoringCustomerOutputPort storingCustomer;
-    private final FindingCustomersOutputPort findingCustomer;
+    private final StoreCustomerOutputPort storingCustomer;
+    private final FindCustomersOutputPort findingCustomer;
 
-    public UpdateCustomerService(StoringCustomerOutputPort storingCustomer,
-            FindingCustomersOutputPort findingCustomer) {
+    public UpdateCustomerService(StoreCustomerOutputPort storingCustomer,
+            FindCustomersOutputPort findingCustomer) {
         this.storingCustomer = storingCustomer;
         this.findingCustomer = findingCustomer;
     }

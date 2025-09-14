@@ -5,16 +5,16 @@ import java.util.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.mromer.customer_microservice.customer.application.port.in.FindCustomerInputPort;
 import com.mromer.customer_microservice.customer.application.port.in.FindCustomersCommand;
-import com.mromer.customer_microservice.customer.application.port.in.FindingCustomerInputPort;
-import com.mromer.customer_microservice.customer.application.port.out.persistence.FindingCustomersOutputPort;
+import com.mromer.customer_microservice.customer.application.port.out.persistence.FindCustomersOutputPort;
 import com.mromer.customer_microservice.customer.domain.Customer;
 
-public class FindCustomerService implements FindingCustomerInputPort {
+public class FindCustomerService implements FindCustomerInputPort {
 
-    private final FindingCustomersOutputPort findingCustomersOutputPort;
+    private final FindCustomersOutputPort findingCustomersOutputPort;
 
-    public FindCustomerService(FindingCustomersOutputPort findingCustomersOutputPort) {
+    public FindCustomerService(FindCustomersOutputPort findingCustomersOutputPort) {
         this.findingCustomersOutputPort = findingCustomersOutputPort;
     }
 
