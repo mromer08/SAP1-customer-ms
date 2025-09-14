@@ -1,0 +1,32 @@
+@rootUrl = http://localhost:8081/api/v1/customers
+
+### Crear un customer
+POST {{rootUrl}}
+Content-Type: application/json
+
+{
+  "firstName": "Manuel",
+  "lastName": "Rojas",
+  "nit": "123456779",
+  "phoneNumber": "12345678"
+}
+
+### Actualizar un customer
+PUT {{rootUrl}}
+Content-Type: application/json
+
+{
+  "id": "dc2b3d22-e545-4919-993e-de1d48592e53",
+  "firstName": "Juan Carlos",
+  "lastName": "Rojas",
+  "phoneNumber": "87654321"
+}
+
+### Obtener un customer por ID
+GET {{rootUrl}}/9a0d6a98-f54c-48f1-b4c6-9bfbaa40d1bf
+
+### Obtener todos los customers
+GET {{rootUrl}}
+
+### Desactivar un customer
+DELETE {{rootUrl}}/9a0d6a98-f54c-48f1-b4c6-9bfbaa40d1bf
