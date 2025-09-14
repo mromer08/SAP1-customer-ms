@@ -6,7 +6,7 @@ Content-Type: application/json
 
 {
   "firstName": "Manuel",
-  "lastName": "Rojas",
+  "lastName": "Perez",
   "nit": "123456779",
   "phoneNumber": "12345678"
 }
@@ -30,3 +30,21 @@ GET {{rootUrl}}
 
 ### Desactivar un customer
 DELETE {{rootUrl}}/9a0d6a98-f54c-48f1-b4c6-9bfbaa40d1bf
+
+### Obtener customers filtrando por nombre
+GET {{rootUrl}}?firstName=carlos
+
+### Obtener customers filtrando por apellido
+GET {{rootUrl}}?lastName=Rojas
+
+### Obtener customers filtrando por NIT
+GET {{rootUrl}}?nit=123456779
+
+### Obtener customers activos
+GET {{rootUrl}}?active=true
+
+### Obtener customers inactivos
+GET {{rootUrl}}?active=true
+
+### Combinar filtros (ejemplo: nombre + estado activo)
+GET {{rootUrl}}?firstName=Juan&active=true
