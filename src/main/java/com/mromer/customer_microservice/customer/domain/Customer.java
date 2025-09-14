@@ -1,7 +1,6 @@
 package com.mromer.customer_microservice.customer.domain;
 
 import java.util.Objects;
-import java.util.UUID;
 
 public class Customer {
 
@@ -10,26 +9,32 @@ public class Customer {
     private final String lastName;
     private final NIT nit;
     private final PhoneNumber phoneNumber;
-    // Link to user account
-    // private final UUID userId;
+    private boolean active;
 
     public Customer(CustomerId id,
                     String firstName,
                     String lastName,
                     NIT nit,
-                    PhoneNumber phoneNumber,
-                    UUID userId) {
+                    PhoneNumber phoneNumber) {
         this.id = Objects.requireNonNull(id);
         this.firstName = validateName(firstName);
         this.lastName = validateName(lastName);
         this.nit = Objects.requireNonNull(nit);
         this.phoneNumber = Objects.requireNonNull(phoneNumber);
-        // this.userId = userId;
+        this.active = true;
+    }
+
+    public void deactivate() {
+        this.active = false;
+    }
+
+    public void activate() {
+        this.active = true;
     }
 
     private String validateName(String name) {
         if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("Name cannot be empty");
+            throw new IllegalArgumentException("El nombre no puede ser vacio");
         }
         return name.trim();
     }
@@ -54,7 +59,7 @@ public class Customer {
         return phoneNumber;
     }
 
-    // public UUID getUserId() {
-    //     return userId;
-    // }
+    public boolean isActive() {
+        return active;
+    }
 }

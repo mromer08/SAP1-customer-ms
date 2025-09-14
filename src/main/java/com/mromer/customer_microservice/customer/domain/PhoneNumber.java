@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public record PhoneNumber(String value) {
     public PhoneNumber {
-        Objects.requireNonNull(value, "Phone number cannot be null");
+        Objects.requireNonNull(value, "El numero de telefono no puede ser nulo");
         if (!value.matches("\\d{8}")) {
-            throw new IllegalArgumentException("Phone number must be exactly 8 digits");
+            throw new IllegalArgumentException("El numero de telefono debe tener exactamente 8 digitos");
         }
     }
 }

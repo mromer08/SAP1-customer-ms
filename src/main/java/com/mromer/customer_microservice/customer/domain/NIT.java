@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public record NIT(String value) {
     public NIT {
-        Objects.requireNonNull(value, "NIT cannot be null");
+        Objects.requireNonNull(value, "El NIT no puede ser nulo");
         if (!value.matches("\\d{9}")) {
-            throw new IllegalArgumentException("NIT must be exactly 9 digits");
+            throw new IllegalArgumentException("El NIT debe tener exactamente 9 digitos");
         }
     }
 }
