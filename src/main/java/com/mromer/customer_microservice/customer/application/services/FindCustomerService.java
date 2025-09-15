@@ -4,12 +4,14 @@ import java.util.*;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mromer.customer_microservice.customer.application.port.in.FindCustomerInputPort;
 import com.mromer.customer_microservice.customer.application.port.in.FindCustomersCommand;
 import com.mromer.customer_microservice.customer.application.port.out.persistence.FindCustomersOutputPort;
 import com.mromer.customer_microservice.customer.domain.Customer;
 
+@Transactional(readOnly = true)
 public class FindCustomerService implements FindCustomerInputPort {
 
     private final FindCustomersOutputPort findingCustomersOutputPort;

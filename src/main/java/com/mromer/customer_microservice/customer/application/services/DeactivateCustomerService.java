@@ -2,11 +2,14 @@ package com.mromer.customer_microservice.customer.application.services;
 
 import java.util.UUID;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.mromer.customer_microservice.customer.application.exceptions.CustomerNotFoundException;
 import com.mromer.customer_microservice.customer.application.port.in.*;
 import com.mromer.customer_microservice.customer.application.port.out.persistence.*;
 import com.mromer.customer_microservice.customer.domain.Customer;
 
+@Transactional(rollbackFor = Exception.class)
 public class DeactivateCustomerService implements DeactivateCustomerInputPort {
 
     private final FindCustomersOutputPort findingCustomersOutputPort;
