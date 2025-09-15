@@ -1,6 +1,7 @@
 package com.mromer.customer_microservice.customer.infrastructure.adapters.in.rest;
 
 import com.mromer.customer_microservice.common.infrastructure.adapters.in.dto.PagedResponseDTO;
+import com.mromer.customer_microservice.customer.application.exceptions.CustomerNotFoundException;
 import com.mromer.customer_microservice.customer.application.port.in.*;
 import com.mromer.customer_microservice.customer.domain.Customer;
 import com.mromer.customer_microservice.customer.infrastructure.adapters.in.rest.dto.CreateCustomerRequestDTO;
@@ -68,7 +69,7 @@ public class CustomerController {
     @GetMapping("/{id}")
     public ResponseEntity<CustomerResponseDTO> getCustomer(@PathVariable UUID id) {
         Customer customer = findingCustomerInputPort.findById(id)
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
+                .orElseThrow(() -> new CustomerNotFoundException(id.toString()));
         return ResponseEntity.ok(CustomerRestMapper.toResponseDTO(customer));
     }
 
